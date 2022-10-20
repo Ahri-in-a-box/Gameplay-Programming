@@ -59,6 +59,8 @@ public class TimerManager : MonoBehaviour
 {
     [SerializeField]
     private Time m_GameDuration = new() { Minutes = 1, Secondes = 30 };
+    [SerializeField]
+    private UnityEngine.UI.Text m_TimerUI = null;
 
     private System.Diagnostics.Stopwatch m_Stopwatch = null;
     public bool IsGameOver { get; private set; }
@@ -90,7 +92,12 @@ public class TimerManager : MonoBehaviour
         if (IsGameOver || IsPaused || !IsStarted)
             return;
 
-        if(!(m_GameDuration > GetTimeElapsed()))
+        Time remaining = GetRemainingTime();
+
+        if (m_TimerUI)
+            m_TimerUI.text = $"{remaining.Minutes}:{remaining.Secondes}";
+
+        if (!(m_GameDuration > GetTimeElapsed()))
         {
             StopTimer();
             OnGameOver?.Invoke();
