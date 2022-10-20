@@ -175,10 +175,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2788408540525072026}
-  - component: {fileID: 7612162807847904554}
   - component: {fileID: 8492387527282554187}
   - component: {fileID: 3355137851833251161}
   - component: {fileID: 8660098483385351687}
+  - component: {fileID: 4322803019604628677}
   m_Layer: 0
   m_Name: BreadRoll
   m_TagString: Untagged
@@ -203,20 +203,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &7612162807847904554
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3312883956077679648}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!114 &8492387527282554187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,3 +370,16 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!65 &4322803019604628677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312883956077679648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.62496066, y: 0.22451758, z: 0.6750045}
+  m_Center: {x: -0.0038975477, y: 0.059680104, z: -0.00670743}

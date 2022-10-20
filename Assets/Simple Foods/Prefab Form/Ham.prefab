@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 8754740252704243087}
   - component: {fileID: 1494391617482161957}
   - component: {fileID: 7468803439965160120}
-  - component: {fileID: 4353334602782135379}
+  - component: {fileID: 8413344000309289526}
   m_Layer: 0
   m_Name: Ham
   m_TagString: Untagged
@@ -372,8 +372,8 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!64 &4353334602782135379
-MeshCollider:
+--- !u!65 &8413344000309289526
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -382,10 +382,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.57057}
+  m_Center: {x: 0.00000005198166, y: 0, z: -0.28528482}
 --- !u!1 &4949115971007377506
 GameObject:
   m_ObjectHideFlags: 0

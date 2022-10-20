@@ -258,10 +258,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6934713086497408866}
-  - component: {fileID: 3187452209464978210}
   - component: {fileID: 965084207227988362}
   - component: {fileID: 3439071897687019956}
   - component: {fileID: 8408937497384629555}
+  - component: {fileID: 510366917701287331}
   m_Layer: 0
   m_Name: CheeseWheel
   m_TagString: Untagged
@@ -287,20 +287,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &3187452209464978210
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7743618930851061208}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!114 &965084207227988362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,3 +454,16 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!65 &510366917701287331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7743618930851061208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5641727, y: 0.13645802, z: 0.54569477}
+  m_Center: {x: 0.023013353, y: 0.007997207, z: -0.0071399505}
