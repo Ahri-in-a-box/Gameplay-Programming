@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Time
+public class CTime
 {
     [SerializeField, Range(0, 3)]
     public int Minutes;
@@ -15,9 +15,9 @@ public class Time
         }
     }
 
-    public static Time operator -(Time a, Time b)
+    public static CTime operator -(CTime a, CTime b)
     {
-        Time res = a > b ? new()
+        CTime res = a > b ? new()
         {
             Minutes = a.Minutes - b.Minutes,
             Secondes = a.Secondes - b.Secondes
@@ -36,7 +36,7 @@ public class Time
         return res;
     }
 
-    public static bool operator >(Time a, Time b)
+    public static bool operator >(CTime a, CTime b)
     {
         if (a.Minutes > b.Minutes)
             return true;
@@ -45,7 +45,7 @@ public class Time
         return a.Secondes > b.Secondes;
     }
 
-    public static bool operator <(Time a, Time b)
+    public static bool operator <(CTime a, CTime b)
     {
         if (a.Minutes < b.Minutes)
             return true;
@@ -58,7 +58,7 @@ public class Time
 public class TimerManager : MonoBehaviour
 {
     [SerializeField]
-    private Time m_GameDuration = new() { Minutes = 1, Secondes = 30 };
+    private CTime m_GameDuration = new() { Minutes = 1, Secondes = 30 };
     [SerializeField]
     private UnityEngine.UI.Text m_TimerUI = null;
 
@@ -92,7 +92,7 @@ public class TimerManager : MonoBehaviour
         if (IsGameOver || IsPaused || !IsStarted)
             return;
 
-        Time remaining = GetRemainingTime();
+        CTime remaining = GetRemainingTime();
 
         if (m_TimerUI)
             m_TimerUI.text = $"{remaining.Minutes}:{remaining.Secondes}";
@@ -129,17 +129,17 @@ public class TimerManager : MonoBehaviour
         IsGameOver = true;
     }
 
-    public Time GetTimeElapsed()
+    public CTime GetTimeElapsed()
     {
         long secondsPassed = m_Stopwatch.ElapsedMilliseconds / 1000;
-        return new Time()
+        return new ()
         {
             Minutes = (int)(secondsPassed / 60),
             Secondes = (int)(secondsPassed % 60)
         };
     }
 
-    public Time GetRemainingTime()
+    public CTime GetRemainingTime()
     {
         return m_GameDuration - GetTimeElapsed();
     }
