@@ -9,6 +9,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private GameObject m_PanelMenu;
     [SerializeField] private GameObject m_PanelControles;
     [SerializeField] private GameObject m_PanelFin;
+    [SerializeField] private GameObject m_InvisibleWalls;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class InterfaceManager : MonoBehaviour
     public void QuitControls()
     {
         m_PanelControles.SetActive(false);
+        m_InvisibleWalls.SetActive(false);
     }
     
     public void ShowCredit()
@@ -72,10 +74,12 @@ public class InterfaceManager : MonoBehaviour
     public void ContinueGame()
     {
         m_PanelMenu.SetActive(false);
+        m_InvisibleWalls.SetActive(false);
     }
 
     public void AfficherMenu()
     {
         m_PanelMenu.SetActive(true);
+        m_InvisibleWalls.SetActive(true);
     }
 }
