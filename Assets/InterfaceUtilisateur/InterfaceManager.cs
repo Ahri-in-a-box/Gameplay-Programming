@@ -27,6 +27,7 @@ public class InterfaceManager : MonoBehaviour
 
     public void PlayGame()
     {
+        print("PlayGame");
         m_PanelAccueil.SetActive(false);
         m_PanelMenu.SetActive(true);
         m_PanelControles.SetActive(true);
@@ -68,4 +69,8 @@ public class InterfaceManager : MonoBehaviour
         m_PanelFin.SetActive(false);
     }
 
+    public void ContinueGame()
+    {
+        m_PanelMenu.SetActive(false);
+    }
 }

@@ -3,7 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Jambon
+  - Carotte
+  - Steak
+  - Banane
+  - Saumon
+  - Tomate
+  - Gateau
+  - Saucisse
+  - Cafe
+  - Oignon
+  - Ketchup
+  - Pizza
+  - Pomme
+  - Coca
+  - Fraise
+  - Poivron
+  - Cookie
+  - Brochette
+  - Saucisson
+  - Bonbon
+  - Pain
+  - Fromage
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Score")]
     [SerializeField]
-    private UnityEngine.UI.Text m_ScoreUI = null;
+    private TextMeshProUGUI m_ScoreUI = null;
 
     [Header("Other Managers")]
     [SerializeField]
@@ -73,13 +74,18 @@ public class GameManager : MonoBehaviour
             o2 = m_Socket2.GetOldestInteractableSelected().colliders[0].gameObject,
             o3 = m_Socket3.GetOldestInteractableSelected().colliders[0].gameObject;
 
+        
         int res = m_RecepeManager.IsValid(o1, o2, o3);
+        // supprimer les éléments
+        Destroy(o1);
+        Destroy(o2);
+        Destroy(o3);
         if (res < 0)
         {
             //Echec
             return;
         }
-
+        
         //Réussite
         if (!m_RecepeDone.Contains(res))
         {
@@ -89,7 +95,7 @@ public class GameManager : MonoBehaviour
                 m_ScoreUI.text = $"{m_Score}";
         }
 
-        SelectRandomElement();
+        //SelectRandomElement();
 
 
         /*
@@ -105,9 +111,9 @@ public class GameManager : MonoBehaviour
         if(m_RandomObjectPrefabs.Count > 0)
         {
             int rand = Mathf.RoundToInt(Random.Range(0, m_RandomObjectPrefabs.Count) - .5f);
-            GameObject obj = Instantiate(m_RandomObjectPrefabs[rand]);
-            m_Socket1.StartManualInteraction(obj.GetComponent<IXRSelectInteractable>());
+            GameObject obj = Instantiate(m_RandomObjectPrefabs[0]);
             obj.transform.position = m_Socket1.transform.position;
+            m_Socket1.StartManualInteraction(obj.GetComponent<IXRSelectInteractable>());
             m_Socket1.EndManualInteraction();
         }
     }

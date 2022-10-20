@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 [System.Serializable]
@@ -30,6 +31,12 @@ public class CTime
         if(res.Secondes < 60)
         {
             res.Secondes += 60;
+            res.Minutes--;
+        }
+
+        if (res.Secondes > 60)
+        {
+            res.Secondes -= 60;
             res.Minutes++;
         }
 
@@ -60,7 +67,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField]
     private CTime m_GameDuration = new() { Minutes = 1, Secondes = 30 };
     [SerializeField]
-    private UnityEngine.UI.Text m_TimerUI = null;
+    private TextMeshProUGUI m_TimerUI = null;
 
     private System.Diagnostics.Stopwatch m_Stopwatch = null;
     public bool IsGameOver { get; private set; }
@@ -68,7 +75,7 @@ public class TimerManager : MonoBehaviour
     {
         get
         {
-            return m_Stopwatch != null && m_Stopwatch.Elapsed == System.TimeSpan.Zero;
+            return m_Stopwatch != null && m_Stopwatch.Elapsed != System.TimeSpan.Zero;
         }
     }
     public bool IsPaused
