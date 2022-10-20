@@ -89,6 +89,11 @@ public class TimerManager : MonoBehaviour
     public delegate void GameOverEvent();
     public static event GameOverEvent OnGameOver;
 
+    private void Awake()
+    {
+        m_TimerUI.text = $"0:0";
+    }
+
     void Start()
     {
         m_Stopwatch = new System.Diagnostics.Stopwatch();

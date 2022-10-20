@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
             throw new System.Exception("All Interation Socket of GameManager must be set");
 
         TimerManager.OnGameOver += OnTimeEnd;
+
+        m_ScoreUI.text = $"0";
     }
 
     public void OnIngredientAdded()
