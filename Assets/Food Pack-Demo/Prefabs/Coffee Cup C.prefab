@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5822530032730409834}
   m_Layer: 0
   m_Name: Coffee Cup C
-  m_TagString: Untagged
+  m_TagString: Cafe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

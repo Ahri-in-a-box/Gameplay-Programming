@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1463418938905139750}
   m_Layer: 0
   m_Name: Soda bottle Glass A
-  m_TagString: Untagged
+  m_TagString: Coca
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

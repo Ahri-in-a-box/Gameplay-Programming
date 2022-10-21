@@ -9,7 +9,11 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private GameObject m_PanelMenu;
     [SerializeField] private GameObject m_PanelControles;
     [SerializeField] private GameObject m_PanelFin;
+    [SerializeField] private GameObject m_PanelSuccess;
+    [SerializeField] private GameObject m_PanelNotSuccess;
     [SerializeField] private GameObject m_InvisibleWalls;
+
+    private bool isActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +22,7 @@ public class InterfaceManager : MonoBehaviour
         m_PanelMenu.SetActive(false);
         m_PanelControles.SetActive(false);
         m_PanelFin.SetActive(false);
+        m_PanelSuccess.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,7 +51,6 @@ public class InterfaceManager : MonoBehaviour
     public void QuitControls()
     {
         m_PanelControles.SetActive(false);
-        m_InvisibleWalls.SetActive(false);
     }
     
     public void ShowCredit()
@@ -81,5 +85,35 @@ public class InterfaceManager : MonoBehaviour
     {
         m_PanelMenu.SetActive(true);
         m_InvisibleWalls.SetActive(true);
+    }
+
+    public void AfficherSuccess()
+    {
+        if (isActive)
+        {
+            m_PanelSuccess.SetActive(false);
+            isActive = false;
+        }
+        else
+        {
+            m_PanelSuccess.SetActive(true);
+            isActive = true;
+            Invoke("AfficherSuccess", 5);
+        }
+    }
+
+    public void AfficherNotSuccess()
+    {
+        if (isActive)
+        {
+            m_PanelNotSuccess.SetActive(false);
+            isActive = false;
+        }
+        else
+        {
+            m_PanelNotSuccess.SetActive(true);
+            isActive = true;
+            Invoke("AfficherSuccess", 5);
+        }
     }
 }

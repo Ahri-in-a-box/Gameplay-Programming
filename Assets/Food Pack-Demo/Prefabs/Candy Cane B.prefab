@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 605213565700298108}
   m_Layer: 0
   m_Name: Candy Cane B
-  m_TagString: Untagged
+  m_TagString: Bonbon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1594112233574151295}
   m_Layer: 0
   m_Name: Salami slice A
-  m_TagString: Untagged
+  m_TagString: Saucisson
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
