@@ -19,7 +19,7 @@ internal enum GameState
     OVER
 }
 
-public class GameManager : MonoBehaviourSingleton<GameManager>
+public class GameManager : MonoBehaviour
 {
     private int m_Score = 0;
 
@@ -44,17 +44,28 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private GameState m_GameState = GameState.MAIN_MENU;
     private readonly List<int> m_RecepeDone = new();
 
+    private static GameManager m_Instance = null;
+    public static GameManager Instance => m_Instance;
+
+    protected void Awake()
+    {
+        if (m_Instance == null)
+            m_Instance = this;
+        if (m_Instance != this)
+            Destroy(this);
+    }
+
     void Start()
     {
         if (!(m_Socket1 && m_Socket2 && m_Socket3))
             throw new System.Exception("All Interation Socket of GameManager must be set");
 
-        m_TimerManager = TimerManager.Instance;
-        m_RecipeManager = RecipeManager.Instance;
+        m_TimerManager = (TimerManager)TimerManager.Instance;
+        m_RecipeManager = (RecipeManager)RecipeManager.Instance;
 
         TimerManager.OnGameOver += OnTimeEnd;
-
-        m_ScoreUI.text = $"0";
+        if (m_ScoreUI)
+            m_ScoreUI.text = $"0";
     }
 
     public void OnIngredientAdded()
@@ -73,11 +84,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             o3 = m_Socket3.GetOldestInteractableSelected().colliders[0].gameObject;
 
         
-        int res = m_RecepeManager.IsValid(o1, o2, o3);
+        int res = m_RecipeManager.IsValid(o1, o2, o3);
         // supprimer les �l�ments
         Destroy(o1);
         Destroy(o2);
         Destroy(o3);
+
+        SelectRandomElement();
+
         if (res < 0)
         {
             //Echec
@@ -93,8 +107,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
                 m_ScoreUI.text = $"{m_Score}";
         }
 
-        //SelectRandomElement();
-
 
         /*
          * Si 0: rien
@@ -109,10 +121,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         if(m_RandomObjectPrefabs.Count > 0)
         {
             int rand = Mathf.RoundToInt(Random.Range(0, m_RandomObjectPrefabs.Count) - .5f);
-            GameObject obj = Instantiate(m_RandomObjectPrefabs[0]);
+            GameObject obj = Instantiate(m_RandomObjectPrefabs[rand]);
             obj.transform.position = m_Socket1.transform.position;
             m_Socket1.StartManualInteraction(obj.GetComponent<IXRSelectInteractable>());
-            //m_Socket1.EndManualInteraction();
         }
     }
 

@@ -1,22 +1,16 @@
 using System;
 using UnityEngine;
-public abstract class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class MonoBehaviourSingleton : MonoBehaviour
 {
-    private static Lazy<T> LazyInstance = null;
+    private static MonoBehaviourSingleton m_Instance = null;
 
-    public static T Instance => LazyInstance.Value;
-
-    private static T CreateSingleton()
-    {
-        var ownerObject = new GameObject($"{typeof(T).Name} (singleton)");
-        var instance = ownerObject.AddComponent<T>();
-        DontDestroyOnLoad(ownerObject);
-        return instance;
-    }
+    public static MonoBehaviourSingleton Instance => m_Instance;
 
     protected virtual void Awake()
     {
-        if(LazyInstance == null)
-            LazyInstance = new(CreateSingleton);
+        if (m_Instance == null)
+            m_Instance = this;
+        if(m_Instance != this)
+            Destroy(this);
     }
 }

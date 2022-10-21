@@ -19,8 +19,11 @@ public class Recipe
 
     public bool CheckRecepe(GameObject o1, GameObject o2, GameObject o3)
     {
-        List<string> objects = new() { o1.name.ToLower(), o2.name.ToLower(), o3.name.ToLower() };
+        List<string> objects = new() { o1.tag.ToLower(), o2.tag.ToLower(), o3.tag.ToLower() };
         objects.Sort((o1, o2) => o1.CompareTo(o2));
-        return objects.ToArray() == elements;
+        for (int i = 0; i < 3; i++)
+            if (objects[i].CompareTo(elements[i]) != 0)
+                return false;
+        return true;
     }
 }

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class TimerManager : MonoBehaviourSingleton<TimerManager>
+public class TimerManager : MonoBehaviour
 {
     [SerializeField]
     private CTime m_GameDuration = new() { Minutes = 1, Secondes = 30 };
@@ -28,14 +28,22 @@ public class TimerManager : MonoBehaviourSingleton<TimerManager>
     public delegate void GameOverEvent();
     public static event GameOverEvent OnGameOver;
 
-    private void Awake()
+    private static TimerManager m_Instance = null;
+    public static TimerManager Instance => m_Instance;
+
+    protected void Awake()
     {
-        m_TimerUI.text = $"0:0";
+        if (m_Instance == null)
+            m_Instance = this;
+        if (m_Instance != this)
+            Destroy(this);
     }
 
     void Start()
     {
         m_Stopwatch = new System.Diagnostics.Stopwatch();
+        if (m_TimerUI)
+            m_TimerUI.text = $"0:00";
     }
 
     void Update()

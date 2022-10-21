@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecipeManager : MonoBehaviourSingleton<RecipeManager>
+public class RecipeManager : MonoBehaviour
 {
     //Checks valids recepes
     private readonly List<Recipe> m_Recipes = new() 
@@ -20,6 +20,17 @@ public class RecipeManager : MonoBehaviourSingleton<RecipeManager>
         new Recipe(11, "petit dej equilibre", "Cafe", "Cookie", "Pomme"),
         new Recipe(12, "Ratatouille", "Carotte", "Oignon", "Poivron"),
     };
+
+    private static RecipeManager m_Instance = null;
+    public static RecipeManager Instance => m_Instance;
+
+    protected void Awake()
+    {
+        if (m_Instance == null)
+            m_Instance = this;
+        if (m_Instance != this)
+            Destroy(this);
+    }
 
     public int IsValid(GameObject o1, GameObject o2, GameObject o3)
     {
