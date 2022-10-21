@@ -13170,6 +13170,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1421409790}
+    - target: {fileID: 6732642993952426758, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6946135980459222487, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
       propertyPath: m_Name
       value: CanvasPrincipal

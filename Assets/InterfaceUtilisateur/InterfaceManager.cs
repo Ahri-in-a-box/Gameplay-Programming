@@ -27,6 +27,9 @@ public class InterfaceManager : MonoBehaviour
         m_PanelSuccess.SetActive(false);
         m_PanelNotSuccess.SetActive(false);
         m_ButtonMenu.SetActive(false);
+
+        GameManager.OnRecipeFailed += AfficherNotSuccess;
+        GameManager.OnRecipeSuccess += AfficherSuccess;
     }
 
     // Update is called once per frame
@@ -98,18 +101,22 @@ public class InterfaceManager : MonoBehaviour
         m_ButtonMenu.SetActive(false);
     }
 
-    public void AfficherSuccess()
+    public void AfficherSuccess(string recipeName = null)
+    {
+        if (!isActive)
+        {
+            m_PanelSuccess.SetActive(true);
+            isActive = true;
+            Invoke("CacherSuccess", 5);
+        }
+    }
+
+    public void CacherSuccess()
     {
         if (isActive)
         {
             m_PanelSuccess.SetActive(false);
             isActive = false;
-        }
-        else
-        {
-            m_PanelSuccess.SetActive(true);
-            isActive = true;
-            Invoke("AfficherSuccess", 5);
         }
     }
 
@@ -124,7 +131,7 @@ public class InterfaceManager : MonoBehaviour
         {
             m_PanelNotSuccess.SetActive(true);
             isActive = true;
-            Invoke("AfficherSuccess", 5);
+            Invoke("AfficherNotSuccess", 5);
         }
     }
 }
