@@ -40,7 +40,7 @@ public class TimerManager : MonoBehaviourSingleton<TimerManager>
         CTime remaining = GetRemainingTime();
 
         if (m_TimerUI)
-            m_TimerUI.text = $"{remaining.Minutes}:{remaining.Secondes}";
+            m_TimerUI.text = $"{remaining.Minutes}:{remaining.Secondes:D2}";
 
         if (!(m_GameDuration > GetTimeElapsed()))
         {
