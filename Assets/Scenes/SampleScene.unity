@@ -8785,6 +8785,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1289949194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4607236818210816452, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+  m_PrefabInstance: {fileID: 4607236817231643719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1326120828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7200927917085622770, guid: a84a636a35a83fe408bd4b3d8c2b8058, type: 3}
@@ -12939,6 +12944,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3283966228722518014, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488552301723948442, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292573569948868846, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607236816849186878, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4607236816849186879, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -12951,6 +12972,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1398211045}
+    - target: {fileID: 4607236817327869936, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4607236817327869937, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -12959,6 +12984,10 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1421409790}
+    - target: {fileID: 4607236817383154626, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4607236817383154627, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -12971,6 +13000,14 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1421409790}
+    - target: {fileID: 4607236817385664785, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607236817652045699, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4607236817652045700, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -12983,6 +13020,10 @@ PrefabInstance:
       propertyPath: m_PanelFin
       value: 
       objectReference: {fileID: 1563896264}
+    - target: {fileID: 4607236817948800913, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_ButtonMenu
+      value: 
+      objectReference: {fileID: 1289949194}
     - target: {fileID: 4607236817948800913, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
       propertyPath: m_PanelSuccess
       value: 
@@ -13078,6 +13119,10 @@ PrefabInstance:
     - target: {fileID: 4607236817948800914, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607236818210816462, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
+      propertyPath: m_Size.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4607236818210816463, guid: cb389786ef1cd2f47ad70659a170e48d, type: 3}
       propertyPath: m_InteractionManager
