@@ -22,6 +22,7 @@ internal enum GameState
 public class GameManager : MonoBehaviour
 {
     private int m_Score = 0;
+    private int m_Combo = 0; 
 
     [Header("Score")]
     [SerializeField]
@@ -42,7 +43,13 @@ public class GameManager : MonoBehaviour
     private RecipeManager m_RecipeManager;
 
     private GameState m_GameState = GameState.MAIN_MENU;
-    private readonly List<int> m_RecepeDone = new();
+    private readonly List<int> m_RecipeDone = new();
+
+    //events
+    public delegate void RecipeFailedEvent();
+    public static event RecipeFailedEvent OnRecipeFailed;
+    public delegate void RecipeSuccessEvent(string recipeName);
+    public static event RecipeSuccessEvent OnRecipeSuccess;
 
     private static GameManager m_Instance = null;
     public static GameManager Instance => m_Instance;
@@ -95,17 +102,23 @@ public class GameManager : MonoBehaviour
         if (res < 0)
         {
             //Echec
+            m_Combo = 0;
+            OnRecipeFailed?.Invoke();
             return;
         }
-        
+
+        OnRecipeSuccess?.Invoke(m_RecipeManager.GetRecipeName(res));
+
         //R�ussite
-        if (!m_RecepeDone.Contains(res))
+        if (!m_RecipeDone.Contains(res))
         {
-            m_RecepeDone.Add(res);
-            m_Score += 10;
+            m_RecipeDone.Add(res);
+            m_Combo++;
+            m_Score += 10 * m_Combo;
             if (m_ScoreUI)
                 m_ScoreUI.text = $"{m_Score}";
-        }
+        }else
+            m_Combo = 0;
 
 
         /*

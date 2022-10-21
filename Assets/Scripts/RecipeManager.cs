@@ -39,4 +39,12 @@ public class RecipeManager : MonoBehaviour
                 return recepe.id;
         return -1;
     }
+
+    public string GetRecipeName(int recipeId)
+    {
+        foreach (Recipe recipe in m_Recipes)
+            if (recipeId == recipe.id)
+                return recipe.name;
+        return null;
+    }
 }
