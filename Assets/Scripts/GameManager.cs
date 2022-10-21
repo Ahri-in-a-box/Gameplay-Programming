@@ -6,8 +6,8 @@ using UnityEngine.XR.Interaction.Toolkit;
  * Notes:
  *  -   Gerer le score
  *  -   Gerer combinaison
- *  -   Gerer aliment aléatoire
- *  -   Action à la fin  du jeu
+ *  -   Gerer aliment alï¿½atoire
+ *  -   Action ï¿½ la fin  du jeu
  */
 
 public enum GameState
@@ -61,9 +61,9 @@ public class GameManager : MonoBehaviour
     public void OnIngredientAdded()
     {
         /*
-         * 1: Vérifier s'il y a bien un objet par socket
-         * 2: Vérifier si la combinaison existe
-         * 3: Vérifier si la combinaison a déjà été faite
+         * 1: Vï¿½rifier s'il y a bien un objet par socket
+         * 2: Vï¿½rifier si la combinaison existe
+         * 3: Vï¿½rifier si la combinaison a dï¿½jï¿½ ï¿½tï¿½ faite
          */
 
         if (!(m_Socket1.hasSelection && m_Socket2.hasSelection && m_Socket3.hasSelection))
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //Réussite
+        //Rï¿½ussite
         if (!m_RecepeDone.Contains(res))
         {
             m_RecepeDone.Add(res);
@@ -94,8 +94,8 @@ public class GameManager : MonoBehaviour
 
         /*
          * Si 0: rien
-         * Si 1: Animation ou Son échec OU rien
-         * Si 2: Animation ou Son réussite OU rien
+         * Si 1: Animation ou Son ï¿½chec OU rien
+         * Si 2: Animation ou Son rï¿½ussite OU rien
          * Si 3: Si 2 + augmentation du score
          */
     }
@@ -128,6 +128,15 @@ public class GameManager : MonoBehaviour
         {
             m_TimeManager.PauseTimer();
             m_GameState = m_TimeManager.IsPaused ? GameState.PAUSED : GameState.STARTED;
+        }
+    }
+
+    public void QuitGame()
+    {
+        if(m_GameState != GameState.MAIN_MENU && m_GameState != GameState.OVER)
+        {
+            m_TimeManager.StopTimer();
+            m_GameState = GameState.OVER;
         }
     }
 
