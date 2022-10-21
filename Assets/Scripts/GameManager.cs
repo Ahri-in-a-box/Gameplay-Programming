@@ -7,11 +7,11 @@ using UnityEngine.XR.Interaction.Toolkit;
  * Notes:
  *  -   Gerer le score
  *  -   Gerer combinaison
- *  -   Gerer aliment aléatoire
- *  -   Action à la fin  du jeu
+ *  -   Gerer aliment alï¿½atoire
+ *  -   Action ï¿½ la fin  du jeu
  */
 
-public enum GameState
+internal enum GameState
 {
     MAIN_MENU,
     STARTED,
@@ -19,19 +19,13 @@ public enum GameState
     OVER
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     private int m_Score = 0;
 
     [Header("Score")]
     [SerializeField]
     private TextMeshProUGUI m_ScoreUI = null;
-
-    [Header("Other Managers")]
-    [SerializeField]
-    private TimerManager m_TimeManager = null;
-    [SerializeField]
-    private RecepeManager m_RecepeManager = null;
 
     [Header("Sockets")]
     [SerializeField]
@@ -44,17 +38,19 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> m_RandomObjectPrefabs = new();
 
+    private TimerManager m_TimerManager;
+    private RecipeManager m_RecipeManager;
+
     private GameState m_GameState = GameState.MAIN_MENU;
     private readonly List<int> m_RecepeDone = new();
 
-    public void Awake()
+    void Start()
     {
-        if (!m_TimeManager)
-            throw new System.Exception("TimeManager of GameManager must be set");
-        if (!m_RecepeManager)
-            throw new System.Exception("RecepeManager of GameManager must be set");
         if (!(m_Socket1 && m_Socket2 && m_Socket3))
             throw new System.Exception("All Interation Socket of GameManager must be set");
+
+        m_TimerManager = TimerManager.Instance;
+        m_RecipeManager = RecipeManager.Instance;
 
         TimerManager.OnGameOver += OnTimeEnd;
 
@@ -64,9 +60,9 @@ public class GameManager : MonoBehaviour
     public void OnIngredientAdded()
     {
         /*
-         * 1: Vérifier s'il y a bien un objet par socket
-         * 2: Vérifier si la combinaison existe
-         * 3: Vérifier si la combinaison a déjà été faite
+         * 1: Vï¿½rifier s'il y a bien un objet par socket
+         * 2: Vï¿½rifier si la combinaison existe
+         * 3: Vï¿½rifier si la combinaison a dï¿½jï¿½ ï¿½tï¿½ faite
          */
 
         if (!(m_Socket1.hasSelection && m_Socket2.hasSelection && m_Socket3.hasSelection))
@@ -78,7 +74,7 @@ public class GameManager : MonoBehaviour
 
         
         int res = m_RecepeManager.IsValid(o1, o2, o3);
-        // supprimer les éléments
+        // supprimer les ï¿½lï¿½ments
         Destroy(o1);
         Destroy(o2);
         Destroy(o3);
@@ -88,11 +84,11 @@ public class GameManager : MonoBehaviour
             return;
         }
         
-        //Réussite
+        //Rï¿½ussite
         if (!m_RecepeDone.Contains(res))
         {
             m_RecepeDone.Add(res);
-            m_Score++;
+            m_Score += 10;
             if (m_ScoreUI)
                 m_ScoreUI.text = $"{m_Score}";
         }
@@ -102,8 +98,8 @@ public class GameManager : MonoBehaviour
 
         /*
          * Si 0: rien
-         * Si 1: Animation ou Son échec OU rien
-         * Si 2: Animation ou Son réussite OU rien
+         * Si 1: Animation ou Son ï¿½chec OU rien
+         * Si 2: Animation ou Son rï¿½ussite OU rien
          * Si 3: Si 2 + augmentation du score
          */
     }
@@ -116,7 +112,7 @@ public class GameManager : MonoBehaviour
             GameObject obj = Instantiate(m_RandomObjectPrefabs[0]);
             obj.transform.position = m_Socket1.transform.position;
             m_Socket1.StartManualInteraction(obj.GetComponent<IXRSelectInteractable>());
-            m_Socket1.EndManualInteraction();
+            //m_Socket1.EndManualInteraction();
         }
     }
 
@@ -126,7 +122,7 @@ public class GameManager : MonoBehaviour
         {
             m_GameState = GameState.STARTED;
             SelectRandomElement();
-            m_TimeManager.StartTimer();
+            m_TimerManager.StartTimer();
         }
     }
 
@@ -134,8 +130,17 @@ public class GameManager : MonoBehaviour
     {
         if(m_GameState != GameState.MAIN_MENU && m_GameState != GameState.OVER)
         {
-            m_TimeManager.PauseTimer();
-            m_GameState = m_TimeManager.IsPaused ? GameState.PAUSED : GameState.STARTED;
+            m_TimerManager.PauseTimer();
+            m_GameState = m_TimerManager.IsPaused ? GameState.PAUSED : GameState.STARTED;
+        }
+    }
+
+    public void QuitGame()
+    {
+        if(m_GameState != GameState.MAIN_MENU && m_GameState != GameState.OVER)
+        {
+            m_TimerManager.StopTimer();
+            m_GameState = GameState.OVER;
         }
     }
 
